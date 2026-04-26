@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stampante 3D Scuola</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Laboratorio Stampante 3D</h1>
+</header>
+
+<section class="video">
+    <h2>Tutorial</h2>
+    <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/GbsUidEGIws"
+        allowfullscreen></iframe>
+</section>
+
+<section class="archivio">
+    <h2>Archivio Progetti</h2>
+    <div class="grid">
+        <div th:each="p : ${progetti}" class="card">
+            <img th:src="${p.immagine}" />
+            <h3 th:text="${p.nome}"></h3>
+            <p th:text="${p.descrizione}"></p>
+        </div>
+    </div>
+</section>
+
+<section class="prenotazione">
+    <h2>Prenota Progetto</h2>
+    <form action="/prenota" method="post">
+        <input type="text" name="nome" placeholder="Nome" required>
+
+        <select name="progetto">
+            <option>Funzioni matematiche</option>
+            <option>Tempio greco</option>
+            <option>Sistema limbico</option>
+            <option>Terra</option>
+            <option>Vulcano acido</option>
+        </select>
+
+        <select name="orario">
+            <option>7:55-8:50</option>
+            <option>8:50-9:45</option>
+            <option>10:00-10:55</option>
+            <option>10:55-11:50</option>
+            <option>12:05-13:00</option>
+            <option>13:00-13:55</option>
+        </select>
+
+        <button type="submit">Prenota</button>
+    </form>
+</section>
+
+</body>
+</html>
