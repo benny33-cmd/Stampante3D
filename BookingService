@@ -1,17 +1,37 @@
-import java.util.*;
+import java.sql.*;
 
 public class BookingService {
 
-    private Map<String, Booking> prenotazioni = new HashMap<>();
+    public boolean prenota(Booking b) {
 
-    public boolean prenota(Booking booking) {
-        String key = booking.getProgetto() + booking.getOrario();
+        try (Connection conn = Database.connect()) {
 
-        if (prenotazioni.containsKey(key)) {
+            // controllo se già occupato
+            String check = "SELECT * FROM prenotazioni WHERE progetto=? AND orario=?";
+            PreparedStatement ps = conn.prepareStatement(check);
+            ps.setString(1, b.progetto);
+            ps.setString(2, b.orario);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return false;
+            }
+
+            // inserimento
+            String insert = "INSERT INTO prenotazioni(nome, progetto, orario) VALUES (?, ?, ?)";
+            PreparedStatement ins = conn.prepareStatement(insert);
+            ins.setString(1, b.nome);
+            ins.setString(2, b.progetto);
+            ins.setString(3, b.orario);
+
+            ins.executeUpdate();
+
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
-
-        prenotazioni.put(key, booking);
-        return true;
     }
 }
