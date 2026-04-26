@@ -1,40 +1,45 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial;
+    background: #f1f4f8;
     margin: 0;
-    background: #f5f7fa;
 }
 
 header {
-    background: #1f3b5c;
+    background: #2f4f6f;
     color: white;
     padding: 20px;
     text-align: center;
 }
 
-h2 {
-    color: #1f3b5c;
+section {
+    padding: 40px;
 }
 
-.video, .archivio, .prenotazione {
-    padding: 40px;
+h2 {
+    color: #2f4f6f;
 }
 
 .grid {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .card {
     background: white;
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 200px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+img {
+    width: 100%;
 }
 
 button {
-    background: #1f3b5c;
+    background: #2f4f6f;
     color: white;
     padding: 10px;
     border: none;
 }
-
