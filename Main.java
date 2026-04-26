@@ -3,7 +3,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-
+        Database.init();
         BookingService service = new BookingService();
 
         Booking b1 = new Booking("Terra", "7:55-8:50", "Mario");
