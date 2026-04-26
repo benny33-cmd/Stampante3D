@@ -1,58 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Stampante 3D Scuola</title>
-    <link rel="stylesheet" href="/style.css">
+    <title>Stampante 3D</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f5f7fa;
+        }
+
+        header {
+            background: #1f3b5c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .section {
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
-    <h1>Laboratorio Stampante 3D</h1>
+    <h1>Stampante 3D Scuola</h1>
 </header>
 
-<section class="video">
-    <h2>Tutorial</h2>
+<div class="section">
+    <h2>🎬 Tutorial</h2>
     <iframe width="560" height="315"
-        src="https://www.youtube.com/embed/GbsUidEGIws"
-        allowfullscreen></iframe>
-</section>
+        src="https://www.youtube.com/embed/GbsUidEGIws">
+    </iframe>
+</div>
 
-<section class="archivio">
-    <h2>Archivio Progetti</h2>
-    <div class="grid">
-        <div th:each="p : ${progetti}" class="card">
-            <img th:src="${p.immagine}" />
-            <h3 th:text="${p.nome}"></h3>
-            <p th:text="${p.descrizione}"></p>
-        </div>
-    </div>
-</section>
+<div class="section">
+    <h2>📦 Progetti</h2>
 
-<section class="prenotazione">
-    <h2>Prenota Progetto</h2>
-    <form action="/prenota" method="post">
-        <input type="text" name="nome" placeholder="Nome" required>
+    <div class="card">🌍 Terra</div>
+    <div class="card">🌋 Vulcano</div>
+    <div class="card">🧠 Sistema Limbico</div>
+    <div class="card">📈 Funzioni</div>
+    <div class="card">🏛 Tempio</div>
+</div>
 
-        <select name="progetto">
-            <option>Funzioni matematiche</option>
-            <option>Tempio greco</option>
-            <option>Sistema limbico</option>
+<div class="section">
+    <h2>📅 Prenotazione</h2>
+
+    <form>
+        Nome: <input type="text"><br><br>
+
+        Progetto:
+        <select>
             <option>Terra</option>
-            <option>Vulcano acido</option>
-        </select>
+            <option>Vulcano</option>
+        </select><br><br>
 
-        <select name="orario">
+        Orario:
+        <select>
             <option>7:55-8:50</option>
             <option>8:50-9:45</option>
-            <option>10:00-10:55</option>
-            <option>10:55-11:50</option>
-            <option>12:05-13:00</option>
-            <option>13:00-13:55</option>
-        </select>
+        </select><br><br>
 
-        <button type="submit">Prenota</button>
+        <button>Prenota</button>
     </form>
-</section>
+</div>
 
 </body>
 </html>
