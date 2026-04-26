@@ -1,0 +1,17 @@
+import java.util.*;
+
+public class BookingService {
+
+    private Map<String, Booking> prenotazioni = new HashMap<>();
+
+    public boolean prenota(Booking booking) {
+        String key = booking.getProgetto() + booking.getOrario();
+
+        if (prenotazioni.containsKey(key)) {
+            return false;
+        }
+
+        prenotazioni.put(key, booking);
+        return true;
+    }
+}
