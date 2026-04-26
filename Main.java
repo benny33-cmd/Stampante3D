@@ -4,6 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         Database.init();
+        
+        port(8080);
         BookingService service = new BookingService();
 
         Booking b1 = new Booking("Terra", "7:55-8:50", "Mario");
