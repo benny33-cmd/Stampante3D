@@ -1,0 +1,28 @@
+import java.sql.*;
+
+public class Database {
+
+    private static final String URL = "jdbc:h2:./database";
+
+    public static Connection connect() throws SQLException {
+        return DriverManager.getConnection(URL, "sa", "");
+    }
+
+    public static void init() {
+        try (Connection conn = connect();
+             Statement stmt = conn.createStatement()) {
+
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS prenotazioni (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    nome VARCHAR(100),
+                    progetto VARCHAR(100),
+                    orario VARCHAR(50)
+                )
+            """);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
